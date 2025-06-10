@@ -1,0 +1,20 @@
+.footer-container {
+    text-align: center;
+    border-top: 1px solid black;
+    padding-top: 1rem;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (min-width: 768px) {
+    .footer-columns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+}
