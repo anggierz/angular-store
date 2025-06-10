@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tooltip',
@@ -10,5 +11,12 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrl: './tooltip.component.css'
 })
 export class TooltipComponent {
+
+  constructor(private router: Router) { }
+
+  onClick(): void {
+    console.log('Tooltip clicked');
+    this.router.navigate(['']);
+  }
 
 }
