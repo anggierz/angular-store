@@ -1,4 +1,14 @@
 <div class="tooltip-container">
     <img class="tooltip-logo" src="../../../assets/images/logov2.png" alt="Angular Store">
-    <button mat-button>Login</button>
+
+    <div class="button-browser">
+        <button mat-button>Login</button>
+    </div>
+
+    <div class="button-mobile">
+        <button mat-button [matMenuTriggerFor]="menu">☰</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Login</button>
+        </mat-menu>
+    </div>
 </div>

@@ -8,5 +8,26 @@
 
 .tooltip-logo {
     height: 50px;
+}
 
+
+.button-mobile {
+    display: none;
+}
+
+.button-browser {
+    display: flex;
+    align-items: center;;
+}
+
+
+@media (max-width: 768px) {
+  .button-browser {
+    display: none;
+  }
+
+  .button-mobile {
+    display: flex;
+    align-items: center;
+  }
 }
