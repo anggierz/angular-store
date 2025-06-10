@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-tooltip',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule],
   templateUrl: './tooltip.component.html',
   styleUrl: './tooltip.component.css'
 })
