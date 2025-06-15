@@ -33,11 +33,11 @@ export class BasketComponent {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      direccion: ['', Validators.required],
-      cp: ['', Validators.required],
-      telefono: ['', Validators.required]
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['', [Validators.required, Validators.minLength(3)]],
+      direccion: ['', [Validators.required, Validators.minLength(5)]],
+      cp: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
+      telefono: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
     });
   }
 

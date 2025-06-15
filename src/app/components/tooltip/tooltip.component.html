@@ -1,16 +1,23 @@
 <div class="tooltip-container">
-    <a routerLink="/">
+  <a routerLink="/">
     <img class="tooltip-logo" src="../../../assets/images/logov2.png" alt="Angular Store" />
-    </a>
+  </a>
 
-    <div class="button-browser">
-        <button mat-button routerLink="/login">Login</button>
-    </div>
+  <div class="button-browser">
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-icon-button routerLink="/basket" aria-label="Carrito">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </div>
 
-    <div class="button-mobile">
-        <button mat-button [matMenuTriggerFor]="menu">☰</button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/login">Login</button>
-        </mat-menu>
-    </div>
+  <div class="button-mobile">
+    <button mat-button [matMenuTriggerFor]="menu">☰</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/login">Login</button>
+      <button mat-menu-item routerLink="/basket">
+        <mat-icon>shopping_cart</mat-icon>
+        Carrito
+      </button>
+    </mat-menu>
+  </div>
 </div>
