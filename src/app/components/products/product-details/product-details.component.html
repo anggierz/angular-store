@@ -2,24 +2,26 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<mat-card class="details-card" *ngIf="!isLoading && product">
-  <div class="details-content">
-    
-    <img [src]="product.image" alt="{{ product.title }}" class="details-img" />
+<div *ngIf="!isLoading && product" class="details-container">
+  <mat-card class="details-card">
+    <div class="details-content">
+      <div class="image-wrapper">
+        <img [src]="product.image" alt="{{ product.title }}" class="details-img" />
+      </div>
 
-    
-    <div class="details-right">
-      <h2>{{ product.title }}</h2>
-      <p><strong>Precio:</strong> \${{ product.price }}</p>
+      <div class="details-right">
+        <h2>{{ product.title }}</h2>
+        <p><strong>Precio:</strong> {{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
 
-      <mat-form-field appearance="fill" class="quantity-field">
-        <mat-label>Cantidad</mat-label>
-        <input matInput type="number" [formControl]="quantity" min="1" />
-      </mat-form-field>
+        <mat-form-field appearance="fill" class="quantity-field">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" [formControl]="quantity" min="1" />
+        </mat-form-field>
 
-      <button mat-icon-button color="primary" (click)="addToCart()" aria-label="Añadir al carrito">
-        <mat-icon>add_shopping_cart</mat-icon>
-      </button>
+        <button mat-icon-button color="primary" (click)="addToCart()" aria-label="Añadir al carrito">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </div>
     </div>
-  </div>
-</mat-card>
+  </mat-card>
+</div>

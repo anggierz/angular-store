@@ -3,7 +3,7 @@ import { Product } from '../../../interfaces/product.interface';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    CurrencyPipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
