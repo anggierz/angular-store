@@ -1,23 +1,23 @@
-<mat-card>
-  <h2>Login</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" type="email" />
-    </mat-form-field>
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="auth-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Contraseña</mat-label>
-      <input matInput formControlName="password" type="password" />
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
-      Continuar
-    </button>
-  </form>
-
-  <p>
-    ¿No tienes cuenta?
-    <a routerLink="/register">Registrate aquí</a>
-  </p>
-</mat-card>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+        Continuar
+      </button>
+    </form>
+    <p class="auth-link">
+      ¿No tienes cuenta? <a routerLink="/register">Registrate aquí</a>
+    </p>
+  </mat-card>
+</div>
