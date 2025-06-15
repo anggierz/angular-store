@@ -14,9 +14,4 @@ export class TooltipComponent {
 
   constructor(private router: Router) { }
 
-  onClick(): void {
-    console.log('Tooltip clicked');
-    this.router.navigate(['']);
-  }
-
 }
