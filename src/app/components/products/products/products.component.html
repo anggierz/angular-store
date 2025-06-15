@@ -4,8 +4,10 @@
 
 <div *ngIf="!isLoading" class="product-grid">
   <mat-card *ngFor="let p of filtered" class="product-card" [routerLink]="['/products', p.id]">
-    <img mat-card-image [src]="p.image" alt="{{ p.title }}" />
+    <div class="image-wrapper">
+      <img mat-card-image [src]="p.image" alt="{{ p.title }}" />
+    </div>
     <mat-card-title>{{ p.title }}</mat-card-title>
-    <mat-card-subtitle>\${{ p.price }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ p.price | currency:'EUR':'symbol':'1.2-2' }}</mat-card-subtitle>
   </mat-card>
 </div>

@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -13,7 +13,8 @@ import { SearchComponent } from '../search/search.component';
   imports: [ CommonModule,
     MatProgressSpinnerModule,
     RouterModule,
-    MatCardModule],
+    MatCardModule,
+    CurrencyPipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
