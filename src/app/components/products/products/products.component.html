@@ -1,1 +1,11 @@
-<p>products works!</p>
+<div *ngIf="isLoading" class="loading-container">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="product-grid">
+  <mat-card *ngFor="let p of filtered" class="product-card" [routerLink]="['/products', p.id]">
+    <img mat-card-image [src]="p.image" alt="{{ p.title }}" />
+    <mat-card-title>{{ p.title }}</mat-card-title>
+    <mat-card-subtitle>\${{ p.price }}</mat-card-subtitle>
+  </mat-card>
+</div>
