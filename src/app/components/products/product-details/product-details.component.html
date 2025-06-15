@@ -15,10 +15,22 @@
 
         <mat-form-field appearance="fill" class="quantity-field">
           <mat-label>Cantidad</mat-label>
-          <input matInput type="number" [formControl]="quantity" min="1" />
+          <input
+            matInput
+            type="number"
+            [formControl]="quantity"
+            min="1"
+            required
+          />
         </mat-form-field>
 
-        <button mat-icon-button color="primary" (click)="addToCart()" aria-label="Añadir al carrito">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="addToCart()"
+          aria-label="Añadir al carrito"
+          [disabled]="!quantity.valid"
+        >
           <mat-icon>add_shopping_cart</mat-icon>
         </button>
       </div>

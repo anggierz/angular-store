@@ -1,12 +1,23 @@
 <div class="basket-container">
+  
   <div class="basket-left">
     <h2>Carrito</h2>
-    <mat-card *ngFor="let item of items">
-      {{ item.qty }} x {{ item.title }} — {{ item.price | currency:'EUR':'symbol':'1.2-2' }}
-    </mat-card>
-    <h3>Total: {{ total | currency:'EUR':'symbol':'1.2-2' }}</h3>
+
+    <ng-container *ngIf="items$ | async as items">
+      <mat-card *ngFor="let item of items">
+        {{ item.qty }} x {{ item.product.title }} — {{ item.product.price | currency:'EUR' }}
+        <button mat-button color="warn" (click)="removeItem(item.product.id)">Quitar</button>
+      </mat-card>
+
+      <button mat-stroked-button color="warn" (click)="clear()" *ngIf="items.length">
+        Vaciar carrito
+      </button>
+    </ng-container>
+
+    <h3>Total: {{ total$ | async | currency:'EUR' }}</h3>
   </div>
 
+  <!-- Columna derecha: formulario -->
   <div class="basket-right">
     <h2>Envío</h2>
     <form [formGroup]="form" (ngSubmit)="submit()" class="basket-form">

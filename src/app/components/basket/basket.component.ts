@@ -1,49 +1,60 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
+import { selectBasketItems, selectBasketTotal, BasketItem } from '../../store/basket.selectors';
+import { removeFromBasket, clearBasket } from '../../store/basket.actions';
 
 @Component({
   selector: 'app-basket',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule],
+    MatCardModule
+  ],
   templateUrl: './basket.component.html',
   styleUrl: './basket.component.css'
 })
 export class BasketComponent {
-  items = [
-    { title: 'Producto A', price: 10, qty: 2 },
-    { title: 'Producto B', price: 20, qty: 1 },
-    { title: 'Producto C', price: 5, qty: 3 }
-  ];
+  items$: Observable<BasketItem[]>;
+  total$: Observable<number>;
 
-  get total(): number {
-    return this.items.reduce((sum, item) => sum + item.price * item.qty, 0);
+  form = this.fb.group({
+    nombre: ['', Validators.required],
+    apellido: ['', Validators.required],
+    direccion: ['', Validators.required],
+    cp: ['', Validators.required],
+    telefono: ['', Validators.required]
+  });
+
+  constructor(private store: Store, private fb: FormBuilder) {
+    this.items$ = this.store.select(selectBasketItems);
+    this.total$ = this.store.select(selectBasketTotal);
   }
 
-  form: FormGroup;
+  removeItem(productId: number) {
+    this.store.dispatch(removeFromBasket({ productId }));
+  }
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(3)]],
-      apellido: ['', [Validators.required, Validators.minLength(3)]],
-      direccion: ['', [Validators.required, Validators.minLength(5)]],
-      cp: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-    });
+  clear() {
+    this.store.dispatch(clearBasket());
   }
 
   submit() {
     if (this.form.valid) {
-      alert('Pedido enviado');
+      alert('Pedido enviado con éxito');
+      this.clear();
     }
   }
 }

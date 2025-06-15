@@ -9,18 +9,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { Store } from '@ngrx/store';
+import { addToBasket } from '../../../store/basket.actions';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     MatCardModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
-    CurrencyPipe],
+    CurrencyPipe
+  ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
@@ -31,7 +35,8 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private store: Store
   ) {}
 
   ngOnInit() {
@@ -49,6 +54,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    alert(`Añadiste ${this.quantity.value} x ${this.product?.title}`);
+    if (this.product && this.quantity.value && this.quantity.value > 0) {
+      this.store.dispatch(addToBasket({ product: this.product, qty: this.quantity.value }));
+      alert(`Añadiste ${this.quantity.value} x ${this.product.title} al carrito`);
+    }
   }
 }
