@@ -1,1 +1,43 @@
-<p>basket works!</p>
+<div class="basket-container">
+  <div class="basket-left">
+    <h2>Carrito</h2>
+    <mat-card *ngFor="let item of items">
+      {{ item.qty }} x {{ item.title }} — {{ item.price | currency:'EUR':'symbol':'1.2-2' }}
+    </mat-card>
+    <h3>Total: {{ total | currency:'EUR':'symbol':'1.2-2' }}</h3>
+  </div>
+
+  <div class="basket-right">
+    <h2>Envío</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="basket-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="direccion">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CP</mat-label>
+        <input matInput formControlName="cp">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Aceptar
+      </button>
+    </form>
+  </div>
+</div>

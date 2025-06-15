@@ -1,0 +1,28 @@
+.basket-container {
+  display: flex;
+  gap: 32px;
+  padding: 24px;
+  flex-wrap: wrap;
+}
+
+.basket-left,
+.basket-right {
+  flex: 1;
+  min-width: 280px;
+}
+
+.basket-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+mat-card {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .basket-container {
+    flex-direction: column;
+  }
+}
