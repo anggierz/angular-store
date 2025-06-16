@@ -17,7 +17,7 @@
     <h3>Total: {{ total$ | async | currency:'EUR' }}</h3>
   </div>
 
-  <!-- Columna derecha: formulario -->
+  
   <div class="basket-right">
     <h2>Envío</h2>
     <form [formGroup]="form" (ngSubmit)="submit()" class="basket-form">
@@ -47,7 +47,7 @@
       </mat-form-field>
 
       <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-        Aceptar
+        Proceder al pago
       </button>
     </form>
   </div>

@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { selectBasketItems, selectBasketTotal, BasketItem } from '../../store/basket.selectors';
 import { removeFromBasket, clearBasket } from '../../store/basket.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basket',
@@ -31,14 +32,14 @@ export class BasketComponent {
   total$: Observable<number>;
 
   form = this.fb.group({
-    nombre: ['', Validators.required],
-    apellido: ['', Validators.required],
-    direccion: ['', Validators.required],
-    cp: ['', Validators.required],
-    telefono: ['', Validators.required]
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    apellido: ['', [Validators.required, Validators.minLength(3)]],
+    direccion: ['', [Validators.required, Validators.minLength(5)]],
+    cp: ['', [Validators.required, Validators.pattern('^[0-9]{5}$')]],
+    telefono: ['', [Validators.required, Validators.pattern('^[0-9]{9}$')]],
   });
 
-  constructor(private store: Store, private fb: FormBuilder) {
+  constructor(private store: Store, private fb: FormBuilder, private router: Router) {
     this.items$ = this.store.select(selectBasketItems);
     this.total$ = this.store.select(selectBasketTotal);
   }
@@ -53,8 +54,10 @@ export class BasketComponent {
 
   submit() {
     if (this.form.valid) {
-      alert('Pedido enviado con éxito');
+      this.router.navigate(['/payment']);
       this.clear();
+    } else {
+      alert('Por favor, complete todos los campos del formulario.');
     }
   }
 }

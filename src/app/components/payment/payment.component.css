@@ -1,0 +1,19 @@
+.payment-container {
+  display: flex;
+  justify-content: center;
+  padding: 32px;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.spinner-container {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}

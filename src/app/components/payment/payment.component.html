@@ -1,1 +1,26 @@
-<p>payment works!</p>
+<div class="payment-container">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="payment-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Número de tarjeta</mat-label>
+      <input matInput formControlName="cardNumber" placeholder="4999 9999 9999 9999" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha caducidad</mat-label>
+      <input matInput formControlName="expiry" placeholder="MM/YY" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>CVC</mat-label>
+      <input matInput formControlName="cvc" placeholder="123" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="isLoading || form.invalid">
+      Pagar
+    </button>
+
+    <div *ngIf="isLoading" class="spinner-container">
+      <mat-spinner diameter="32"></mat-spinner>
+    </div>
+  </form>
+</div>

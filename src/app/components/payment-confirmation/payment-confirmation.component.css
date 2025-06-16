@@ -1,0 +1,12 @@
+.confirmation-container {
+  text-align: center;
+  padding: 64px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.confirmation-icon {
+  color: #4caf50;
+}
