@@ -55,7 +55,6 @@ export class BasketComponent {
   submit() {
     if (this.form.valid) {
       this.router.navigate(['/payment']);
-      this.clear();
     } else {
       alert('Por favor, complete todos los campos del formulario.');
     }
