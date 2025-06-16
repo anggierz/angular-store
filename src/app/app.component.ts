@@ -8,7 +8,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TooltipComponent, FooterComponent, HomeComponent],
+  imports: [RouterOutlet, TooltipComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
