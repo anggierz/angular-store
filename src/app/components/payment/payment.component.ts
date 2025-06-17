@@ -23,8 +23,8 @@ export class PaymentComponent {
 
    form = this.fb.group({
     cardNumber: ['', [Validators.required]],
-    expiry: ['', [Validators.required]],
-    cvc: ['', [Validators.required]]
+    expiry: ['', [Validators.required, Validators.pattern(/^\d{2}\/\d{2}$/)]],
+    cvc: ['', [Validators.required, Validators.pattern(/^\d{3}$/)]]
   });
 
   isLoading = false;
