@@ -10,8 +10,10 @@ export interface BasketState {
   items: BasketItem[];
 }
 
+const storedItems = localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')!) : [];
+
 const initialState: BasketState = {
-  items: []
+  items: storedItems
 };
 
 export const basketReducer = createReducer(
