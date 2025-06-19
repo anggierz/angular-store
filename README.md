@@ -1,27 +1,81 @@
-# AngularStore
+# 🛍️ Angular Store
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.0.
+Tienda online desarrollada con **Angular 18**, **NgRx** y **Angular Material**. Permite navegar productos, añadir al carrito, procesar el pago y confirmar la compra.
 
-## Development server
+Este repositorio es la solución al Ejercicio Incremental de la asignatura DESARROLLO FRONTEND CON FRAMEWORKS II del Máster de Desarrollo Web de la UEM.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 📦 Características
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Visualización de productos desde [Fake Store API](https://fakestoreapi.com)
+- Registro y login de usuario con persistencia en `sessionStorage`
+- Búsqueda de productos
+- Carrito con gestión de cantidades y eliminación de productos
+- Checkout con formulario de envío y validaciones
+- Proceso de pago simulado
+- Confirmación final de compra
+- Estado global con **NgRx**
+- Persistencia del carrito en `localStorage`
+- Test unitarios con **Jasmine + Karma**
+- Test e2e con **Cypress** (incluye mock de servicios)
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🚀 Instalación y ejecución
 
-## Running unit tests
+1. Clona el repositorio
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+git clone https://github.com/anggierz/angular-store.git
+cd angular-store
+```
 
-## Running end-to-end tests
+2. Instala las dependencias
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm install
+```
+3. Levanta la aplicación
 
-## Further help
+```bash
+ng serve
+```
+Accede en: `http://localhost:4200`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+### 🧪 Tests unitarios
+
+```bash
+npm run test
+```
+
+Verás el porcentaje de **code coverage** en la carpeta /coverage. Todos los componentes y servicios están cubiertos con más del **80%**.
+
+---
+
+### 🧪 Tests end-to-end (Cypress)
+
+Primero, asegúrate de tener la app corriendo (`npm start`) en otro terminal.
+
+```bash
+npm run cypress:open
+```
+
+O ejecuta directamente en modo headless:
+
+```bash
+npm run cypress:run
+```
+
+🧪 **Test cubierto**:  
+✅ Añadir 2 productos desde la home  
+✅ Añadir 1 producto desde búsqueda  
+✅ Llenar formulario de envío  
+✅ Rellenar datos de pago  
+✅ Ver pantalla de confirmación  
+✅ Mock de los servicios utilizados
+
+
+---
